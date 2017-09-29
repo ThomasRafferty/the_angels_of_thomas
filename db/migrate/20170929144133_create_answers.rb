@@ -1,10 +1,10 @@
 class CreateAnswers < ActiveRecord::Migration
   def change
     create_table :answers do |t|
-      t.string :body
-      t.boolean :best_answers
-      t.integer :user_id
-      t.integer :question_id
+      t.string :body, null: false
+      t.boolean :best_answers, null: false
+      t.integer :user_id, null: false
+      t.integer :question_id, null: false
 
       t.timestamps
     end
