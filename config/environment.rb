@@ -17,6 +17,9 @@ require 'logger'
 
 require 'sinatra'
 require "sinatra/reloader" if development?
+require 'pry'
+require 'pry-byebug'
+require 'bcrypt'
 
 require 'erb'
 
