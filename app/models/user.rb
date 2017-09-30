@@ -7,4 +7,10 @@ class User < ActiveRecord::Base
   validates :first_name, :last_name, presence: true
   validates :email, :username, presence: true, uniqueness: true
   validates :password, presence: true
+
+  has_secure_password
+
+  def authenticate(password)
+    self.password == password
+  end
 end
