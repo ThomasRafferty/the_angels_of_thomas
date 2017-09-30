@@ -1,7 +1,3 @@
-get '/' do
-  erb :'index'
-end
-
 get '/users/login' do
   erb :'/users/login'
 end
@@ -18,7 +14,6 @@ post '/users/login' do
     erb :'/users/login'
   end
 end
-
 
 get '/users/new' do
   erb :'/users/new'
