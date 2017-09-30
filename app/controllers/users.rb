@@ -1,7 +1,3 @@
-get '/' do
-  erb :'index'
-end
-
 get '/users/login' do
   erb :'/users/login'
 end
@@ -10,15 +6,15 @@ post '/users/login' do
 
   @user = User.find_by(email: params[:user][:email])
 
-  if @user.authenticate(params[:user][:password])
+  if @user.authenticate(params[:password])
     session[:id] = @user.id
     redirect "/users/#{@user.id}"
   else
     @errors = @user.errors.full_messages
+    redirect "/users"
     erb :'/users/login'
   end
 end
-
 
 get '/users/new' do
   erb :'/users/new'
@@ -34,10 +30,10 @@ post '/users' do
   end
 end
 
-get 'users/:id' do
-  @user = user.find_by(id: params[:id])
+get '/users/:id' do
+  @user = User.find_by(id: params[:id])
   if current_user == @user
-    erb :'user/show'
+    erb :'users/show'
   else
     erb :'users/login'
   end

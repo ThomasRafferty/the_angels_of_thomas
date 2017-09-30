@@ -3,9 +3,14 @@ class User < ActiveRecord::Base
   has_many :votes
   has_many :answers
   has_many :questions
-  validates :first_name, presence: true
-  validates :last_name, presence: true
-  validates :email, presence: true, uniqueness: true
-  validates :username, presence: true, uniqueness: true
+
+  validates :first_name, :last_name, presence: true
+  validates :email, :username, presence: true, uniqueness: true
   validates :password, presence: true
+
+  has_secure_password
+
+  def authenticate(password)
+    self.password == password
+  end
 end
