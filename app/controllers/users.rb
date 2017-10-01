@@ -3,7 +3,6 @@ get '/users/login' do
 end
 
 post '/users/login' do
-
   @user = User.find_by(email: params[:user][:email])
 
   if @user.authenticate(params[:password])
