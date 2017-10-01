@@ -1,6 +1,7 @@
 class CreateVotes < ActiveRecord::Migration
   def change
     create_table :votes do |t|
+      t.integer :value, :null => false
       t.integer :user_id
       t.references :votable, null: false, polymorphic: true, index: true
 
