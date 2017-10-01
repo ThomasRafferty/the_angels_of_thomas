@@ -1,7 +1,22 @@
-<h1> <%= @question.title %> </h1>
-<p>
-<h2> <%= @question.body %> </h2>
+<div class="question_form">
+<h1><%= @question.title %> </h1><p>
+<h2><%= @question.body %> </h2>
+<h5>By: <%=@question.user.username%> </h5>
 
+<form class="question_form" action="/questions/<%= @question.id %>/upvote" method="post">
+  <button class="up_vote" type="submit" name="submit"> ^ </button>  <div class="down_box">
+      <p class="points"><%= @question.votes.count%></p>
+      <p class="votes">up votes</p>
+    </div>
+
+</form>
+
+<form class="question_form" action="/questions/<%= @question.id%>/downvote" method="post">
+  <button class="down_vote" type="submit" name="submit"> v </button> <div class="boxes">
+    <p class="points"><%= @question.votes.count%></p>
+    <p class="votes">down votes</p>
+  </div>
+</form>
 
 <form class="answer" action="/answers/new" method="post">
  <p><p><p>
